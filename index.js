@@ -1,6 +1,3 @@
-
- 
-
 // Animation
 new Typed("#type", {
   strings: ["Mariama Tirera", "Moussa Fily Diallo", "Abdou Karim"],
