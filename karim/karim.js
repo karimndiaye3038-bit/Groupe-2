@@ -12,7 +12,7 @@ new Typed("#type", {
   typeSpeed: 60,
   backSpeed: 40,
   loop: true
-}); 
+});
 // fin de l'animation
 
 // pour que le navbar soit fixe est change de couleur dans les autres sections
@@ -43,7 +43,7 @@ function animateBars() {
 window.addEventListener("scroll", animateBars);
 window.addEventListener("load", animateBars);
 //fin de l'animation du des barres
- 
+
 //animation du fittre des 
 const buttons = document.querySelectorAll("#work button");
 const items = document.querySelectorAll("#work .grid > div");
@@ -68,78 +68,77 @@ buttons.forEach((button, index) => {
 });
 //fin du filtre
 
- // l'animation des chiffres statistiques
-    const counters = document.querySelectorAll(".counter");
-    let started = false;
- 
-    function startCounter() {
-      counters.forEach(counter => {
-        const target = +counter.getAttribute("data-target");
-        let count = 0;
+// l'animation des chiffres statistiques
+const counters = document.querySelectorAll(".counter");
+let started = false;
 
-        const update = () => {
-          const increment = target / 100;
+function startCounter() {
+  counters.forEach(counter => {
+    const target = +counter.getAttribute("data-target");
+    let count = 0;
 
-          count += increment;
+    const update = () => {
+      const increment = target / 100;
 
-          if (count < target) {
-            counter.innerText = Math.floor(count);
-            requestAnimationFrame(update);
-          } else {
-             
-            counter.innerText = target;
-          }
-        };
+      count += increment;
 
-        update();
-      });
-    }
+      if (count < target) {
+        counter.innerText = Math.floor(count);
+        requestAnimationFrame(update);
+      } else {
 
-    window.addEventListener("scroll", () => {
-      const section = document.getElementById("stats");
-      const sectionTop = section.offsetTop;
-
-      if (window.scrollY > sectionTop - 300 && !started) {
-        startCounter();
-        started = true;
+        counter.innerText = target;
       }
-    }); 
-    //fin de l'animation
+    };
 
-  
+    update();
+  });
+}
 
-    // Slides container
-    const slides = document.querySelector('.slides');
-    const dots = document.querySelectorAll('.dot');
-    let index = 0;
-    const total = dots.length;
-    function updateCarousel() {
-        slides.style.transform =
-            `translateX(-${index * 100}%)`;
+window.addEventListener("scroll", () => {
+  const section = document.getElementById("stats");
+  const sectionTop = section.offsetTop;
+
+  if (window.scrollY > sectionTop - 300 && !started) {
+    startCounter();
+    started = true;
+  }
+});
+//fin de l'animation
+
+
+
+// Slides container
+const slides = document.querySelector('.slides');
+const dots = document.querySelectorAll('.dot');
+let index = 0;
+const total = dots.length;
+function updateCarousel() {
+  slides.style.transform =
+    `translateX(-${index * 100}%)`;
 
 
         // Reset all dots
-        // dots.forEach(dot => {
+  dots.forEach(dot => {
 
-        //     dot.classList.remove('bg-black');
+    dot.classList.remove('bg-black');
 
-        //     dot.classList.add('bg-gray-400');
+    dot.classList.add('bg-gray-400');
 
-        // });
-
-
-        // Active dot
-        // dots[index].classList.remove('bg-gray-400');
-
-        // dots[index].classList.add('bg-black');
-    }
-    setInterval(() => {
-        index++;
-        if(index >= total){
-            index = 0;
-        }
-        updateCarousel();
-    }, 3000);
+  });
 
 
-   
+        
+  dots[index].classList.remove('bg-gray-400');
+
+  dots[index].classList.add('bg-black');
+}
+setInterval(() => {
+  index++;
+  if (index >= total) {
+    index = 0;
+  }
+  updateCarousel();
+}, 3000);
+
+
